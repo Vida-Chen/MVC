@@ -1,0 +1,70 @@
+﻿@model MVCTest.Models.WifiInfoT
+
+<table class="table table-hover">
+	@if (Model.WifiInfos.Count > 0)
+	{
+		<tr>
+			<td colspan="7" style="text-align:left" >
+				查詢結果
+			</td>
+		</tr>
+		<tr class="table-primary">
+			@*<td style="text-align:right;">
+				@Html.DisplayNameFor(model => model.項次)
+			</td>*@
+			<td style="text-align:right;">
+				@Html.DisplayNameFor(model => model.熱點類別)
+			</td>
+			<td style="text-align:right;">
+				@Html.DisplayNameFor(model => model.熱點名稱)
+			</td>
+			<td style="text-align:right;">
+				@Html.DisplayNameFor(model => model.郵遞區號)
+			</td>
+			<td style="text-align:right;">
+				@Html.DisplayNameFor(model => model.縣市名稱)
+			</td>
+			<td style="text-align:right;">
+				@Html.DisplayNameFor(model => model.鄉鎮市區)
+			</td>
+			<td style="text-align:right;">
+				@Html.DisplayNameFor(model => model.地址)
+			</td>
+		</tr>
+
+		foreach (var item in Model.WifiInfos)
+		{
+			<tr>
+				@*<td style="text-align:left;">
+					@Html.DisplayFor(i => item.項次)
+				</td>*@
+				<td style="text-align:left;">
+					@Html.DisplayFor(i => item.熱點類別)
+				</td>
+				<td style="text-align:left;">
+					@Html.DisplayFor(i => item.熱點名稱)
+				</td>
+				<td style="text-align:left;">
+					@Html.DisplayFor(i => item.郵遞區號)
+				</td>
+				<td style="text-align:left;">
+					@Html.DisplayFor(i => item.縣市名稱)
+				</td>
+				<td style="text-align:left;">
+					@Html.DisplayFor(i => item.鄉鎮市區)
+				</td>
+				<td style="text-align:left;">
+					@Html.DisplayFor(i => item.地址)
+				</td>
+			</tr>
+		}
+	}
+	else
+	{
+		<tr>
+			<td style="text-align:left">
+				查詢結果: 0筆
+			</td>
+		</tr>
+	}
+</table>

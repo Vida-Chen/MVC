@@ -1,0 +1,45 @@
+﻿@{
+	Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@model MVCTest.Models.WifiInfoT
+@{
+	TempData.Keep("Town");
+}
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div class="card">
+		<h5 class="card-header">查詢台中市Wifi熱點</h5>
+	</div>
+	<div class="card-body">
+		<div style="color:red">
+			@Html.ValidationSummary()
+		</div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.鄉鎮市區, new { @class = "col-form-label" })
+			@Html.DropDownListFor(model => model.鄉鎮市區, TempData["Town"] as List<SelectListItem>, new { @class = "form-control col-md-6" })
+		</div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.地址, new { @class = "col-form-label" })
+			@Html.TextBoxFor(model => model.地址, new { @class = "form-control col-md-6", @placeholder = "可輸入關鍵字" })
+		</div>
+		<input type="submit" value="查詢" class="btn btn-primary btn-sm" />
+	</div>
+
+	if (Model != null)
+	{
+		<div class="card-body">
+			@*這樣寫效能較差，不推薦使用
+				//@Html.Partial("../Query/_PartialQueryResult")
+			*@
+			@*這樣寫效能較Html.Partial好，建議使用*@
+			@{
+				Html.RenderPartial("../Query/_PartialQueryResult");
+			}
+		</div>
+	}
+}
+
